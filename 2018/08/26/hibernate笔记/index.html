@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Category: 转载 | BLANKSPACE&#39;S BLOG</title>
+  <title>hibernate笔记 | BLANKSPACE&#39;S BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -168,69 +168,144 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>筚路蓝缕<br></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/08/19/事物和连接池/">事务&amp;数据库连接池</a></h4>
-                            
-                            <p><time datetime="2018-08-19T10:33:39.000Z"><a href="/2018/08/19/事物和连接池/">2018-08-19</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2018-08-26T01:37:16.000Z" itemprop="datePublished">
+          2018-08-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/总结/'>总结</a>
+    
+    
+</span>
+                <h1>hibernate笔记</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="hibernate小结"><a href="#hibernate小结" class="headerlink" title="hibernate小结"></a>hibernate小结</h1><h2 id="hibernate概念"><a href="#hibernate概念" class="headerlink" title="hibernate概念"></a>hibernate概念</h2><blockquote>
+<p>开放源代码的ORM框架</p>
+</blockquote>
+<blockquote>
+<p>ORM: Object Relative Mapping</p>
+</blockquote>
+<blockquote>
+<p>关键词: ORM 开源框架 持久层</p>
+</blockquote>
+<h2 id="hibernate的优势"><a href="#hibernate的优势" class="headerlink" title="hibernate的优势"></a>hibernate的优势</h2><ul>
+<li>对JDBC访问数据库代码封装,提高我们写代码的效率</li>
+<li>性能好,支持很多关系型数据库</li>
+<li>功能扩展性好</li>
+</ul>
+<h2 id="hibernate的核心"><a href="#hibernate的核心" class="headerlink" title="hibernate的核心"></a>hibernate的核心</h2><ul>
+<li>实体<blockquote>
+<p>关于实体类的编写有一些约束,但是我们编写常规的POJO一般不会出错</p>
+</blockquote>
+</li>
+<li>映射文件<blockquote>
+<p>描述实体和表字段的映射关系 (一般写为（类名.hbm.xml）)</p>
+</blockquote>
+</li>
+<li>hibernate核心配置文件<blockquote>
+<p>hibernate底层代码默认加载src下的hibernate.cfg.xml</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>一些hibernate的配置 核心配置(数据库链接,配置连接池) 方言配置 可选配置(打印sql语句,格式化sql语句) 映射文件加载配置</p>
+</blockquote>
+<h2 id="hibernate核心API"><a href="#hibernate核心API" class="headerlink" title="hibernate核心API"></a>hibernate核心API</h2><ul>
+<li><p>configuration</p>
+<blockquote>
+<p>作用 加载配置文件,可以指定,可以加载默认<br>创建sessionFactory对象 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Configuration cfg = new Configuration();</span><br><span class="line">Configuration cfg = new Configuration().configure();</span><br><span class="line">SessionFactory sf = cfg.buildSeesionFactory();</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>SessionFactory</p>
+<blockquote>
+<p>session并不是轻量级的,一个应用所以不能频繁的创建和销毁SeesionFactory对象,一个应用应该尽量维护一个SessionFactory对象</p>
+</blockquote>
+</li>
+<li><p>Session</p>
+<blockquote>
+<p>这里的session有别于servlet里的session对象,hibetnate中的session对象相当于数据库链接对象<br>可以利用session来操作数据库</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="hibernate主键生成策略"><a href="#hibernate主键生成策略" class="headerlink" title="hibernate主键生成策略"></a>hibernate主键生成策略</h2><ul>
+<li>自然主键 : 利用表中的字段做主键</li>
+<li>代理主键 : 提供一个无业务意义的字段做主键<blockquote>
+<p>主键生成策略指的是hibernate要以什么样的方式生成主键</p>
+</blockquote>
+</li>
+<li>生成策略 increment identity senquence(orcal) native uuid assined</li>
+</ul>
+<h2 id="持久化类的三种状态"><a href="#持久化类的三种状态" class="headerlink" title="持久化类的三种状态"></a>持久化类的三种状态</h2><ul>
+<li>瞬时态 没有唯一标识OID，没有被session管理</li>
+<li>持久态 有唯一标识OID，已经被session管理 持久态对象可以自动更新数据库</li>
+<li>托管态 有唯一标识OID，没有被session管理<blockquote>
+<p>三种状态可以相互转换</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="hibernate-一级缓存及快照区"><a href="#hibernate-一级缓存及快照区" class="headerlink" title="hibernate 一级缓存及快照区"></a>hibernate 一级缓存及快照区</h2><blockquote>
+<p>一级缓存是hibetnate自带的,是session级别的,本质是session里维护的集合,查询的时候如果命中的一级缓存,直接从一级缓存返回,session关闭,缓存的数据也就没有了</p>
+</blockquote>
+<h2 id="其他API"><a href="#其他API" class="headerlink" title="其他API"></a>其他API</h2><ul>
+<li>Query HQL 面向对象方式的查询。</li>
+<li>Criteria QBC 完成面向对象化。</li>
+<li>SQLQuery SQL查询</li>
+</ul>
+<h2 id="Hibernate的一对多"><a href="#Hibernate的一对多" class="headerlink" title="Hibernate的一对多"></a>Hibernate的一对多</h2><pre><code>◦ 表与表之间关系
+        ▪ 一对多关系
+        ▪ 多对多关系
+        ▪ 一对一关系
+◦ Hibernate的一对多配置
+        ▪ 搭建Hibernate基本环境
+        ▪ 创建表
+        ▪ 创建实体
+            • 一的一方
+                ◦ 放的是多的一方的集合
+            • 多的一方
+                ◦ 放的是一的一方的对象
+        ▪ 创建映射
+            • 一的一方
+                ◦ 配置的&lt;set&gt;集合
+            • 多的一方
+                ◦ 配置&lt;many-to-one&gt;
+        ▪ 编写测试类
+◦ Hibernate的一对多的操作
+        ▪ 级联操作：cascade，用于操作其关联的对象。
+            • 级联保存或更新
+            • 级联删除
+        ▪ 测试对象导航
+        ▪ 放弃外键维护权：inverse，用户控制是否有外键维护能力
+</code></pre>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2018/08/21/通用代码抽取以及反射思想/">
+        通用代码抽取以及反射思想 →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>当灵魂升起，看着疲于奔波的自己，成为自己的旁观者，你才能找到自己的节奏</p>
-        </div>
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
 
       
 <!-- ============================ Footer =========================== -->
