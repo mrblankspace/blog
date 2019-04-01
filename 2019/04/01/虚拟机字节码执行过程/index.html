@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2018/10 | BLANKSPACE&#39;S BLOG</title>
+  <title>零点问题与微分不等式 | BLANKSPACE&#39;S BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -61,7 +61,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -190,69 +190,139 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>WELCOME,GUYS!</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>跟我说说你的废话吧</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/10/07/国庆后/">国庆后</a></h4>
-                            
-                            <p><time datetime="2018-10-07T02:40:41.000Z"><a href="/2018/10/07/国庆后/">2018-10-07</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-04-01T04:13:40.000Z" itemprop="datePublished">
+          2019-04-01
+      </time>
+    
+    
+    | 
+    <a href='/tag/总结/'>总结</a>,
+    
+    <a href='/tag/jvm/'>jvm</a>
+    
+    
+</span>
+                <h1>零点问题与微分不等式</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>​        最近对虚拟机的执行过程比较感兴趣，中午拿了一段《深入理解java虚拟机》的代码来跑了跑，最主要的还是在字节码层面虚拟机是如何执行的。</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[]  args)&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();</span><br><span class="line">        Integer  a = 122;</span><br><span class="line">        map.put(&quot;hello&quot;, &quot;你好&quot;);</span><br><span class="line">        map.put(&quot;how are you&quot;,&quot;吃过饭了吗&quot;);</span><br><span class="line">        System.out.println(map.get(&quot;how are you&quot;));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用javap-查看class文件"><a href="#使用javap-查看class文件" class="headerlink" title="使用javap 查看class文件"></a>使用javap 查看class文件</h2><blockquote>
+<p> javap -verbose test10d2.class </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">Picked up _JAVA_OPTIONS:   -Dawt.useSystemAAFontSettings=gasp</span><br><span class="line">Classfile /media/blankspace/resource/javaProgram/JVM/src/cn/swpu/test/test10d2.class</span><br><span class="line">  Last modified Apr 1, 2019; size 808 bytes</span><br><span class="line">  MD5 checksum 04db935845801d51fd5a7533e286da1b</span><br><span class="line">  Compiled from &quot;test10d2.java&quot;</span><br><span class="line">public class cn.swpu.test.test10d2</span><br><span class="line">  minor version: 0</span><br><span class="line">  major version: 52</span><br><span class="line">  flags: ACC_PUBLIC, ACC_SUPER</span><br><span class="line">Constant pool:</span><br><span class="line">   #1 = Methodref          #15.#24        // java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">   #2 = Class              #25            // java/util/HashMap</span><br><span class="line">   #3 = Methodref          #2.#24         // java/util/HashMap.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">   #4 = Methodref          #26.#27        // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;</span><br><span class="line">   #5 = String             #28            // hello</span><br><span class="line">   #6 = String             #29            // 你好</span><br><span class="line">   #7 = InterfaceMethodref #30.#31        // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">   #8 = String             #32            // how are you</span><br><span class="line">   #9 = String             #33            // 吃过饭了吗</span><br><span class="line">  #10 = Fieldref           #34.#35        // java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">  #11 = InterfaceMethodref #30.#36        // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">  #12 = Class              #37            // java/lang/String</span><br><span class="line">  #13 = Methodref          #38.#39        // java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">  #14 = Class              #40            // cn/swpu/test/test10d2</span><br><span class="line">  #15 = Class              #41            // java/lang/Object</span><br><span class="line">  #16 = Utf8               &lt;init&gt;</span><br><span class="line">  #17 = Utf8               ()V</span><br><span class="line">  #18 = Utf8               Code</span><br><span class="line">  #19 = Utf8               LineNumberTable</span><br><span class="line">  #20 = Utf8               main</span><br><span class="line">  #21 = Utf8               ([Ljava/lang/String;)V</span><br><span class="line">  #22 = Utf8               SourceFile</span><br><span class="line">  #23 = Utf8               test10d2.java</span><br><span class="line">  #24 = NameAndType        #16:#17        // &quot;&lt;init&gt;&quot;:()V</span><br><span class="line">  #25 = Utf8               java/util/HashMap</span><br><span class="line">  #26 = Class              #42            // java/lang/Integer</span><br><span class="line">  #27 = NameAndType        #43:#44        // valueOf:(I)Ljava/lang/Integer;</span><br><span class="line">  #28 = Utf8               hello</span><br><span class="line">  #29 = Utf8               你好</span><br><span class="line">  #30 = Class              #45            // java/util/Map</span><br><span class="line">  #31 = NameAndType        #46:#47        // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">  #32 = Utf8               how are you</span><br><span class="line">  #33 = Utf8               吃过饭了吗</span><br><span class="line">  #34 = Class              #48            // java/lang/System</span><br><span class="line">  #35 = NameAndType        #49:#50        // out:Ljava/io/PrintStream;</span><br><span class="line">  #36 = NameAndType        #51:#52        // get:(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">  #37 = Utf8               java/lang/String</span><br><span class="line">  #38 = Class              #53            // java/io/PrintStream</span><br><span class="line">  #39 = NameAndType        #54:#55        // println:(Ljava/lang/String;)V</span><br><span class="line">  #40 = Utf8               cn/swpu/test/test10d2</span><br><span class="line">  #41 = Utf8               java/lang/Object</span><br><span class="line">  #42 = Utf8               java/lang/Integer</span><br><span class="line">  #43 = Utf8               valueOf</span><br><span class="line">  #44 = Utf8               (I)Ljava/lang/Integer;</span><br><span class="line">  #45 = Utf8               java/util/Map</span><br><span class="line">  #46 = Utf8               put</span><br><span class="line">  #47 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">  #48 = Utf8               java/lang/System</span><br><span class="line">  #49 = Utf8               out</span><br><span class="line">  #50 = Utf8               Ljava/io/PrintStream;</span><br><span class="line">  #51 = Utf8               get</span><br><span class="line">  #52 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">  #53 = Utf8               java/io/PrintStream</span><br><span class="line">  #54 = Utf8               println</span><br><span class="line">  #55 = Utf8               (Ljava/lang/String;)V</span><br><span class="line">&#123;</span><br><span class="line">  public cn.swpu.test.test10d2();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         4: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 6: 0</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=3, locals=3, args_size=1</span><br><span class="line">         0: new           #2                  // class java/util/HashMap</span><br><span class="line">         3: dup</span><br><span class="line">         4: invokespecial #3                  // Method java/util/HashMap.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         7: astore_1</span><br><span class="line">         8: bipush        122</span><br><span class="line">        10: invokestatic  #4                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;</span><br><span class="line">        13: astore_2</span><br><span class="line">        14: aload_1</span><br><span class="line">        15: ldc           #5                  // String hello</span><br><span class="line">        17: ldc           #6                  // String 你好</span><br><span class="line">        19: invokeinterface #7,  3            // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">        24: pop</span><br><span class="line">        25: aload_1</span><br><span class="line">        26: ldc           #8                  // String how are you</span><br><span class="line">        28: ldc           #9                  // String 吃过饭了吗</span><br><span class="line">        30: invokeinterface #7,  3            // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">        35: pop</span><br><span class="line">        36: getstatic     #10                 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">        39: aload_1</span><br><span class="line">        40: ldc           #8                  // String how are you</span><br><span class="line">        42: invokeinterface #11,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">        47: checkcast     #12                 // class java/lang/String</span><br><span class="line">        50: invokevirtual #13                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">        53: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 8: 0</span><br><span class="line">        line 9: 8</span><br><span class="line">        line 10: 14</span><br><span class="line">        line 11: 25</span><br><span class="line">        line 12: 36</span><br><span class="line">        line 13: 53</span><br><span class="line">&#125;</span><br><span class="line">SourceFile: &quot;test10d2.java&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="验证泛型擦除"><a href="#验证泛型擦除" class="headerlink" title="验证泛型擦除"></a>验证泛型擦除</h2><blockquote>
+<p>证明编译器在吧泛型类型擦除的代码<strong>19: invokeinterface #7,  3            // InterfaceMethod java/util/Map.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;</strong></p>
+</blockquote>
+<p>​    与这句字节码对应的是 map.put(“hello”, “你好”); 此处invokeinterface引用了HashMap的父类的Map的put方法符号引用，根据方法描述符（<strong>(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object）</strong>可知，</p>
+<p>所调用方法的参数和返回值都是Object类型的。</p>
+<p>​    书上说，java这么实现其实是一种伪泛型。在字节码层面都是把泛型类型当做Object来处理的。反编译后是有强制转换的java代码的。可是强制类型转换的字节码在哪呢？来看看偏移量为19的附近的字节码</p>
+<p><img src="../img/4.1/DeepinScreenshot_select-area_20190401124115.png" alt=""></p>
+<p>虚拟机在调用完invokeinterface后，直接把map引用pop出站了！！  可见字节码并没有帮我们做强制转换啊…</p>
+<h2 id="字节码执行"><a href="#字节码执行" class="headerlink" title="字节码执行"></a>字节码执行</h2><p>​         虚拟机把字节码从class文件加载到内存中，这个过程叫类加载，还要完成一系列复杂的检验过程（不检验的话，有高手根据class文件格式，修改了class文件咋办，所以还是得校验吧）。有关类加载的细节后面再来讨论，今天的重点是字节码的执行过程。</p>
+<pre><code>### 字节码的执行有两块重要的空间需要认识
+</code></pre><ul>
+<li><p>JVM虚拟机栈</p>
+<blockquote>
+<p>这个虚拟机栈是每个线程独立的，意思就是说每个线程都有一个虚拟机栈。虚拟机栈是由栈帧组成的。</p>
+<p>一个方法的开始与结束，意味着一个栈帧的入栈和出栈。</p>
+</blockquote>
+<p>栈帧一般来说又包含了</p>
+<ul>
+<li>局部变量表</li>
+<li>操作数栈</li>
+<li>动态链接</li>
+<li>方法返回值</li>
+</ul>
+</li>
+<li><p>堆 </p>
+<blockquote>
+<p>一般来说对象的分配都是在这里完成的。但是编译器通过逃逸分析，有可能把对象分配到栈上。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="局部变量表"><a href="#局部变量表" class="headerlink" title="局部变量表"></a>局部变量表</h3><blockquote>
+<p>   在上面的例子中偏移量为7的字节码指令    astore_1</p>
+</blockquote>
+<p>就是把新创建的map对象的引用，从操作数栈上，存储到局部变量表的第一个SLOT（局部变量表是以SLOT为单位的，一个SLOT一般是32位 4个字节）上。astore_0 是 存放的this变量。</p>
+<h3 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h3><blockquote>
+<p>  15: ldc           #5                  // String hello<br>   17: ldc           #6                  // String 你好</p>
+</blockquote>
+<p>ldc 是把#5,#6字符串引用push到操作数栈上，此处起到传参的作用</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>当灵魂升起，看着疲于奔波的自己，成为自己的旁观者，你才能找到自己的节奏</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2019/03/28/零点问题与微分不等式/">
+        零点问题与微分不等式 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
