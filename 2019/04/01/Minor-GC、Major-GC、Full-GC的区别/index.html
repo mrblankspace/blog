@@ -93,7 +93,7 @@
 				  	
 				    <li><a href="/categories/jvm/" class="animsition-link">jvm<small>(3)</small></a></li>
 				    
-				    <li><a href="/categories/垃圾场/" class="animsition-link">垃圾场<small>(2)</small></a></li>
+				    <li><a href="/categories/垃圾场/" class="animsition-link">垃圾场<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/总结/" class="animsition-link">总结<small>(7)</small></a></li>
 				    
@@ -105,7 +105,7 @@
 				    
 				    <li><a href="/categories/软件设计师/" class="animsition-link">软件设计师<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/高数/" class="animsition-link">高数<small>(1)</small></a></li>
+				    <li><a href="/categories/高数/" class="animsition-link">高数<small>(2)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -230,26 +230,17 @@
 <p>有的说法是Major GC是收集永久带（perm metaspace）的GC</p>
 </blockquote>
 <p>Minor GC和Major GC其实就是年轻代GC和年老年GC的俗称。而在Hotspot VM具体实现的收集器：Serial GC, Parallel GC, CMS, G1 GC中，大致可以对应到某个Young GC和Old GC算法组合。</p>
-<h2 id="分代GC"><a href="#分代GC" class="headerlink" title="分代GC"></a>分代GC</h2><p>针对HotSpot VM的实现，其实GC的准确分类可以分为：</p>
-<ol>
-<li>分代GC</li>
-<li>Full GC</li>
-</ol>
-<p>以及后续的G1的分区收集本质其实还是一个分代收集器，但是和之前的各类回收器不同，它同时兼顾年轻代和老年代。</p>
-<p>分代GC并不收集整个GC堆的模式，而是只专注分代收集</p>
-<ol>
-<li>Young GC：只收集年轻代的GC</li>
-<li>Old GC：只收集年老代的GC(只有CMS的concurrent collection是这个模式)</li>
-<li>Mixed GC：收集整个young gen以及部分old gen的GC(只有G1有这个模式)</li>
-</ol>
 <h2 id="Full-GC"><a href="#Full-GC" class="headerlink" title="Full GC"></a>Full GC</h2><p>Full GC定义是相对明确的，就是针对整个新生代、老年代、元空间（metaspace，java8以上版本取代perm gen）的全局范围的GC。</p>
 <p> PermSpace(1.7以前)主要是存放静态的类信息和方法信息，静态的方法和变量，final标注的常量信息等。</p>
-<h2 id="aaa"><a href="#aaa" class="headerlink" title="aaa"></a>aaa</h2><p>111</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2019/04/14/极限/" style="float: left;">
+        ← 极限
+    </a>
     
     
     <a class="pull-right" href="/2019/04/01/虚拟机字节码执行过程/">
