@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mrblankspace.cn/"/>
-  <updated>2019-05-17T12:42:00.727Z</updated>
+  <updated>2019-05-18T12:46:55.017Z</updated>
   <id>http://mrblankspace.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>哈哈哈</title>
+    <link href="http://mrblankspace.cn/%E5%93%88%E5%93%88%E5%93%88/"/>
+    <id>http://mrblankspace.cn/哈哈哈/</id>
+    <published>2019-05-18T12:41:12.000Z</published>
+    <updated>2019-05-18T12:46:55.017Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　突然觉得自己学习到现在，只是为了掩盖自己的无知和浅薄。我读书的动机往往是我缺什么和我这个年龄应该去读写什么，可我好像从来没因为自己喜欢什么而去读过一本书，我觉得这是悲哀。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;　　突然觉得自己学习到现在，只是为了掩盖自己的无知和浅薄。我读书的动机往往是我缺什么和我这个年龄应该去读写什么，可我好像从来没因为自己喜欢什么而去读过一本书，我觉得这是悲哀。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="垃圾场" scheme="http://mrblankspace.cn/categories/%E5%9E%83%E5%9C%BE%E5%9C%BA/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>定积分证明</title>
@@ -502,31 +526,6 @@
     
       <category term="程序设计范式" scheme="http://mrblankspace.cn/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>通用栈结构设计</title>
-    <link href="http://mrblankspace.cn/%E9%80%9A%E7%94%A8%E6%A0%88%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://mrblankspace.cn/通用栈结构设计/</id>
-    <published>2018-05-11T11:13:40.000Z</published>
-    <updated>2018-05-11T11:39:40.629Z</updated>
-    
-    <content type="html"><![CDATA[<p>&emsp;&emsp;环境：c语言 + vc++6.0<br>&emsp;&emsp;一段基本的栈实现代码，针对特定的数据类型设计的栈结构，实现了基本的创建栈，撤销栈操作，入栈出栈操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">typedef struct&#123;      //栈结构定义</span><br><span class="line">int *element;  </span><br><span class="line">int size;</span><br><span class="line">int volume;</span><br><span class="line">&#125;stack;</span><br><span class="line"></span><br><span class="line">//初始化栈</span><br><span class="line">void create(stack*s)&#123;</span><br><span class="line">s-&gt;size=0;</span><br><span class="line">s-&gt;volume=3;</span><br><span class="line">s-&gt;element=malloc(s-&gt;volume*sizeof(int));</span><br><span class="line">&#125;</span><br><span class="line">//销毁栈</span><br><span class="line">void dispose(stack*s)&#123;</span><br><span class="line">free(s-&gt;element);</span><br><span class="line">&#125;</span><br><span class="line">//入栈</span><br><span class="line">void push(stack *s, int value)&#123;</span><br><span class="line">if(s-&gt;size == s-&gt;volume)&#123;</span><br><span class="line">s-&gt;volume *= 2;</span><br><span class="line">s-&gt;element = realloc(s-&gt;element,s-&gt;volume*sizeof(int));</span><br><span class="line">&#125;</span><br><span class="line">s-&gt;element[s-&gt;size] = value;</span><br><span class="line">s-&gt;size++;</span><br><span class="line">&#125;</span><br><span class="line">//出栈</span><br><span class="line">int pop(stack*s)&#123;</span><br><span class="line">//assert(s-&gt;size);</span><br><span class="line">s-&gt;size--;</span><br><span class="line">return s-&gt;element[s-&gt;size];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//测试代码</span><br><span class="line">int main()&#123;</span><br><span class="line">stack st;</span><br><span class="line">create(&amp;st);</span><br><span class="line">push(&amp;st,3);</span><br><span class="line">push(&amp;st,2);</span><br><span class="line">push(&amp;st,1);</span><br><span class="line">for(int i = st.size;i&gt;0;i--)&#123;</span><br><span class="line">printf(&quot;%d\n&quot;,pop(&amp;st));</span><br><span class="line">&#125;</span><br><span class="line">dispose(&amp;st);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;可是这样做存在一定的问题，对所有的数据类型不通用，这种类型的栈结构的使用有很大的局限性。于是人们就开始思考了，能不能设计出一种通用的栈结构？使得对所有的数据类型通用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">void *element;//此处为了实现数据通用，所以指针为void类型</span><br><span class="line">int size;//当前栈的大小</span><br><span class="line">int volume;//栈容量</span><br><span class="line">int len;//因为数据类型不确定，此处需要定义元素所占字节数</span><br><span class="line">&#125;stack;</span><br><span class="line"></span><br><span class="line">//创建栈</span><br><span class="line">void create(stack *s, int length)&#123;</span><br><span class="line">s-&gt;size = 0;</span><br><span class="line">s-&gt;volume = 3;</span><br><span class="line">s-&gt;len = length;</span><br><span class="line">s-&gt;element = malloc(s-&gt;volume*length);</span><br><span class="line">if(s-&gt;element==NULL)&#123;</span><br><span class="line">exit(1);</span><br><span class="line">printf(&quot;内存分配失败&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//销毁栈</span><br><span class="line">void dispose(stack *s)&#123;</span><br><span class="line">free(s-&gt;element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//入栈操作 arg1：s 栈地址 arg2: value 要push的值的地址</span><br><span class="line">void push(stack *s, void *value)&#123;</span><br><span class="line">void *addr;</span><br><span class="line">if(s-&gt;size == s-&gt;volume)&#123;</span><br><span class="line">s-&gt;volume *= 2;</span><br><span class="line">s-&gt;element = realloc(s-&gt;element,s-&gt;volume*s-&gt;len);</span><br><span class="line">&#125;</span><br><span class="line">addr = (char*)s-&gt;element + s-&gt;size*s-&gt;len;</span><br><span class="line">memcpy(addr,value,s-&gt;len);</span><br><span class="line">s-&gt;size++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//出栈操作   arg1: s 栈地址   arg2: value  出栈值存放地址</span><br><span class="line">//此处设计的是通用栈结构，不知道数据类型，所以返回值的类型是不确定的，我们将弹出的数据存放在地址为value的空间中 </span><br><span class="line">void pop(stack *s, void *value)&#123;</span><br><span class="line">if(s-&gt;size&gt;0)&#123;</span><br><span class="line">void *addr;</span><br><span class="line">s-&gt;size--;</span><br><span class="line">addr = (char*)s-&gt;element+s-&gt;size*s-&gt;len;</span><br><span class="line">memcpy(value,addr,s-&gt;len);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">printf(&quot;栈中现在没有元素哦&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">//int型数据测试</span><br><span class="line">int array[5] = &#123;1,2,3,4,5&#125;;</span><br><span class="line">char *books[4] = &#123;&quot;西游记&quot;,&quot;红楼梦&quot;,&quot;水浒传&quot;,&quot;三国演义&quot;&#125;;</span><br><span class="line">int i;</span><br><span class="line">stack s;</span><br><span class="line">create(&amp;s, 4);        //初始化栈</span><br><span class="line">for(i = 0; i&lt;5; i++)&#123;</span><br><span class="line">push(&amp;s, &amp;array[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">for(i = 0; i&lt;5; i++)&#123;</span><br><span class="line">pop(&amp;s, &amp;array[i]);</span><br><span class="line">printf(&quot;%d\n&quot;, array[i]);</span><br><span class="line">&#125;</span><br><span class="line">dispose(&amp;s);</span><br><span class="line">//字符串类型测试</span><br><span class="line"></span><br><span class="line">create(&amp;s,sizeof(char*));</span><br><span class="line">for(i = 0;i&lt;4;i++)&#123;</span><br><span class="line">push(&amp;s, &amp;books[i]);      //压入的是字符串的地址</span><br><span class="line">&#125;</span><br><span class="line">for(i = 0;i&lt;4;i++)&#123;</span><br><span class="line">pop(&amp;s, &amp;books[i]);</span><br><span class="line">printf(&quot;%s\n&quot;, books[i]);</span><br><span class="line">&#125;</span><br><span class="line">dispose(&amp;s);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>&emsp;&emsp;我们可以看到，在对int和字符串经行入栈出栈操作，使用的是通一个栈结构，我们代码的重用性更强了，它不仅试用与普通数据类型，也适用于复杂的数据类型。它带给我们的思考就是，贯穿软件设计的始末，我们如何设计更为通用的东西出来，以应对变化的外界环境。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&amp;emsp;&amp;emsp;环境：c语言 + vc++6.0&lt;br&gt;&amp;emsp;&amp;emsp;一段基本的栈实现代码，针对特定的数据类型设计的栈结构，实现了基本的创建栈，撤销栈操作，入栈出栈操作。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;
-      
-    
-    </summary>
-    
-      <category term="程序设计范式" scheme="http://mrblankspace.cn/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%8C%83%E5%BC%8F/"/>
-    
-    
-      <category term="数据结构 c语言" scheme="http://mrblankspace.cn/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
