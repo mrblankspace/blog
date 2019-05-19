@@ -58,9 +58,21 @@
   
 
   <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
     <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-    
+    <script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            emoticon_url: 'https://cloud.panjunwen.com/alu',
+      emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
+      app_id: 'O8udwX1TXnU7rpiPBjvbYzcu-gzGzoHsz',
+      app_key: 'PcABA7D2rrxhol7I3DgkJjTz',
+      placeholder: 'Write a Comment'
+        });
+</script>
 </head>
 
 <!--
@@ -623,7 +635,7 @@ Transaction  其实指的一组操作，里面包含许多个单一的逻辑。�
 
       
 <!-- ============================ Footer =========================== -->
-#<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 
 <footer>
     <div class="container">
@@ -658,7 +670,7 @@ Transaction  其实指的一组操作，里面包含许多个单一的逻辑。�
         <span class="post-meta-divider">|</span>
         <span id="busuanzi_container_site_uv" style='display:none'>
                 本站访客数<span id="busuanzi_value_site_uv"></span>人        </span>
-
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
