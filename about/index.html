@@ -192,7 +192,23 @@
 
 
       <!-- ============================ Hero Image =========================== -->
-
+ <!--载入js，在</body>之前插入即可-->
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库-->
+    <script src="你托管的Valine路径./dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+            av: AV, 
+            el: '.comment',
+            emoticon_url: 'https://cloud.panjunwen.com/alu',
+      emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
+      app_id: '你的id',
+      app_key: '你的key',
+      placeholder: 'Write a Comment'
+        });
+    </script>
 <section id="hero" class="scrollme">
     <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
         <div class="row">
@@ -286,12 +302,22 @@
                 <!-- timeline-centered -->
             </div>
         </div>
+        <!--评论显示区，请插入合适的位置-->
+<div class="comment"></div>
     </div>
+
+
 </section>
+
+
+
+
+
 
       
 <!-- ============================ Footer =========================== -->
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <footer>
     <div class="container">
             <div class="copy">
@@ -326,14 +352,12 @@
         <span id="busuanzi_container_site_uv" style='display:none'>
                 本站访客数<span id="busuanzi_value_site_uv"></span>人        </span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</div>
 
-</footer>
+
+
   
 <!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
+      <script type="text/javascript">
     var resizeHero = function () {
         var hero = $(".cover,.heightblock"),
             window1 = $(window);
